@@ -817,6 +817,31 @@ function setCustomFont(font) {
   });
 }
 
+function setCustomSize(size, price) {
+  state.customizer.size = size;
+  state.customizer.dimensions = `${size} x ${size}`;
+  state.customizer.price = price;
+
+  const priceEl = document.getElementById('cust-unit-price');
+  const labelEl = document.getElementById('cust-size-label');
+  if (priceEl) priceEl.innerText = `₹${price.toFixed(2)}`;
+  if (labelEl) labelEl.innerText = `${size} Square Unit`;
+
+  // Update button highlights
+  ['44', '48', '55'].forEach(s => {
+    const btn = document.getElementById(`btn-size-${s}`);
+    if (btn) {
+      if (`${s}mm` === size) {
+        btn.className = 'cust-size-btn p-3 rounded-2xl border text-center transition border-pink-500 bg-pink-50 dark:bg-pink-950/40 text-pink-700 dark:text-pink-300 font-bold cursor-pointer';
+      } else {
+        btn.className = 'cust-size-btn p-3 rounded-2xl border text-center transition border-slate-200 dark:border-slate-800 bg-slate-50 dark:bg-slate-950 text-slate-700 dark:text-slate-300 cursor-pointer hover:border-pink-400';
+      }
+    }
+  });
+
+  showToast(`Size selected: ${size} (₹${price.toFixed(2)})`);
+}
+
 function setCustomFinish(finish) {
   state.customizer.finish = finish;
   const finishLayer = document.getElementById('custom-finish-layer');
@@ -828,6 +853,8 @@ function setCustomFinish(finish) {
 function resetCustomizer() {
   state.customizer.photoUrl = '/assets/owners.jpg';
   state.customizer.serverPhotoUrl = '/assets/owners.jpg';
+  state.customizer.size = '55mm';
+  state.customizer.price = 99.00;
   const imgEl = document.getElementById('custom-uploaded-img');
   if (imgEl) {
     imgEl.src = '/assets/owners.jpg';
@@ -836,18 +863,19 @@ function resetCustomizer() {
   const txtInput = document.getElementById('cust-text');
   if (txtInput) txtInput.value = 'Beach Adventures 🏍️✨';
   updateCustomPreview();
+  setCustomSize('55mm', 99.00);
   setCustomFont('cursive');
   setCustomFinish('glossy');
 }
 
 function generateCustomMagnetPreviewHtml() {
-  const { photoUrl, text, font } = state.customizer;
+  const { photoUrl, text, font, size } = state.customizer;
   return `
     <div class="w-32 h-32 bg-white dark:bg-slate-900 p-2 rounded-2xl shadow-lg border border-slate-200 dark:border-slate-700 flex flex-col justify-between items-center text-slate-900 dark:text-white select-none">
       <div class="w-full h-20 rounded-xl overflow-hidden bg-gradient-to-br from-pink-500 to-purple-600 flex items-center justify-center">
         ${photoUrl ? `<img src="${photoUrl}" class="w-full h-full object-cover">` : `<i data-lucide="camera" class="w-6 h-6 text-white"></i>`}
       </div>
-      <span class="text-[9px] font-${font} truncate text-center w-full block mt-1">${text || 'Custom Square'}</span>
+      <span class="text-[9px] font-${font} truncate text-center w-full block mt-1">${text || 'Custom Square'} (${size || '55mm'})</span>
     </div>
   `;
 }
@@ -860,18 +888,19 @@ function addCustomToFridge() {
 }
 
 function addCustomToCart() {
+  const size = state.customizer.size || '55mm';
   const customItem = {
     id: 'custom-' + Date.now(),
     type: 'custom',
-    title: `Custom 3"x3" Square Magnet: ${state.customizer.text || 'Personalized'}`,
-    price: state.customizer.price,
+    title: `Custom ${size} Square Magnet: ${state.customizer.text || 'Personalized'}`,
+    price: state.customizer.price || 99.00,
     imgUrl: state.customizer.photoUrl || state.customizer.serverPhotoUrl,
     html: generateCustomMagnetPreviewHtml(),
-    details: { ...state.customizer }
+    details: { ...state.customizer, size: size, dimensions: `${size} x ${size}` }
   };
 
   addToCart(customItem);
-  showToast('Custom square magnet added to cart!');
+  showToast(`Custom ${size} square magnet added to cart!`);
   toggleCartModal(true);
 }
 
