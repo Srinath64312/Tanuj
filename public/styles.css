@@ -1,0 +1,168 @@
+/* Teen Magnets CSS Styles with Dynamic Light/Dark Theme & High Contrast */
+
+:root {
+  --bg-primary: #f8fafc;
+  --bg-surface: #ffffff;
+  --bg-surface-elevated: #f1f5f9;
+  --text-primary: #0f172a;
+  --text-secondary: #475569;
+  --text-muted: #94a3b8;
+  --border-color: #e2e8f0;
+}
+
+html.dark {
+  --bg-primary: #020617;
+  --bg-surface: #0f172a;
+  --bg-surface-elevated: #1e293b;
+  --text-primary: #f8fafc;
+  --text-secondary: #cbd5e1;
+  --text-muted: #64748b;
+  --border-color: #1e293b;
+}
+
+/* Base Body Styles */
+body {
+  background-color: var(--bg-primary);
+  color: var(--text-primary);
+  transition: background-color 0.25s ease, color 0.25s ease, border-color 0.25s ease;
+}
+
+/* Fallback light mode explicit styling */
+html:not(.dark) body {
+  background-color: #f8fafc !important;
+  color: #0f172a !important;
+}
+
+html.dark body {
+  background-color: #020617 !important;
+  color: #f8fafc !important;
+}
+
+/* Magnet 3D Lift & Shadow */
+.magnet-card-shadow {
+  box-shadow: 
+    0 10px 15px -3px rgba(0, 0, 0, 0.08),
+    0 4px 6px -4px rgba(0, 0, 0, 0.05),
+    0 1px 2px 0 rgba(0, 0, 0, 0.04),
+    inset 0 1px 1px 0 rgba(255, 255, 255, 0.6);
+  transition: all 0.25s cubic-bezier(0.16, 1, 0.3, 1);
+}
+
+.dark .magnet-card-shadow {
+  box-shadow: 
+    0 10px 20px -3px rgba(0, 0, 0, 0.4),
+    0 4px 6px -4px rgba(0, 0, 0, 0.3),
+    inset 0 1px 1px 0 rgba(255, 255, 255, 0.1);
+}
+
+.magnet-card-shadow:hover {
+  transform: translateY(-4px) scale(1.02);
+  box-shadow: 
+    0 20px 25px -5px rgba(236, 72, 153, 0.15),
+    0 8px 10px -6px rgba(0, 0, 0, 0.1),
+    inset 0 1px 2px 0 rgba(255, 255, 255, 0.8);
+}
+
+.dark .magnet-card-shadow:hover {
+  box-shadow: 
+    0 20px 25px -5px rgba(236, 72, 153, 0.25),
+    0 8px 10px -6px rgba(0, 0, 0, 0.5),
+    inset 0 1px 2px 0 rgba(255, 255, 255, 0.15);
+}
+
+/* Finishes */
+.finish-glossy {
+  position: absolute;
+  inset: 0;
+  background: linear-gradient(135deg, rgba(255,255,255,0.4) 0%, rgba(255,255,255,0.05) 50%, rgba(0,0,0,0.1) 100%);
+  pointer-events: none;
+  border-radius: inherit;
+}
+
+.finish-matte {
+  position: absolute;
+  inset: 0;
+  background: radial-gradient(circle at 50% 50%, rgba(255,255,255,0.08) 0%, rgba(0,0,0,0.15) 100%);
+  backdrop-filter: blur(0.5px);
+  pointer-events: none;
+  border-radius: inherit;
+}
+
+.finish-holographic {
+  position: absolute;
+  inset: 0;
+  background: linear-gradient(
+    45deg,
+    rgba(255, 0, 0, 0.2),
+    rgba(255, 154, 0, 0.2),
+    rgba(208, 222, 33, 0.2),
+    rgba(79, 220, 74, 0.2),
+    rgba(63, 218, 216, 0.2),
+    rgba(47, 201, 226, 0.2),
+    rgba(28, 127, 238, 0.2),
+    rgba(95, 21, 242, 0.2),
+    rgba(186, 12, 248, 0.2),
+    rgba(251, 7, 217, 0.2),
+    rgba(255, 0, 0, 0.2)
+  );
+  mix-blend-mode: overlay;
+  pointer-events: none;
+  border-radius: inherit;
+  animation: holoShift 4s ease infinite alternate;
+}
+
+@keyframes holoShift {
+  0% { filter: hue-rotate(0deg) brightness(1); }
+  100% { filter: hue-rotate(90deg) brightness(1.2); }
+}
+
+/* Fridge Door Textures */
+.fridge-silver {
+  background: linear-gradient(135deg, #e2e8f0 0%, #cbd5e1 50%, #94a3b8 100%) !important;
+}
+
+.fridge-mint {
+  background: linear-gradient(135deg, #ccfbf1 0%, #99f6e4 50%, #5eead4 100%) !important;
+}
+
+.fridge-cream {
+  background: linear-gradient(135deg, #fef9c3 0%, #fef08a 50%, #fde047 100%) !important;
+}
+
+.fridge-dark {
+  background: linear-gradient(135deg, #334155 0%, #1e293b 50%, #0f172a 100%) !important;
+}
+
+/* Draggable Magnets on Fridge Canvas */
+.fridge-magnet-item {
+  position: absolute;
+  cursor: grab;
+  user-select: none;
+  touch-action: none;
+  transition: transform 0.1s ease, box-shadow 0.2s ease;
+  filter: drop-shadow(2px 6px 8px rgba(0,0,0,0.3));
+}
+
+.fridge-magnet-item:active {
+  cursor: grabbing;
+  transform: scale(1.06) rotate(3deg) !important;
+  filter: drop-shadow(4px 12px 16px rgba(0,0,0,0.45));
+  z-index: 999 !important;
+}
+
+/* Wishlist Button Heart Animation */
+.wishlist-btn.active svg {
+  fill: #ec4899;
+  stroke: #ec4899;
+  transform: scale(1.15);
+  transition: transform 0.2s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+}
+
+/* Scrollbar Utility */
+.scrollbar-none::-webkit-scrollbar {
+  display: none;
+}
+.scrollbar-none {
+  -ms-overflow-style: none;
+  scrollbar-width: none;
+}

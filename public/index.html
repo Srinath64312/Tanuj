@@ -1,0 +1,897 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Teen Magnets • 3"x3" Handcrafted Fridge Magnets</title>
+  
+  <!-- Instant Theme Initializer (Prevents Screen Flash) -->
+  <script>
+    (function() {
+      try {
+        const savedTheme = localStorage.getItem('teenmagnets_theme');
+        if (savedTheme === 'light') {
+          document.documentElement.classList.remove('dark');
+          document.documentElement.classList.add('light');
+        } else {
+          document.documentElement.classList.add('dark');
+          document.documentElement.classList.remove('light');
+        }
+      } catch (e) {
+        document.documentElement.classList.add('dark');
+      }
+    })();
+  </script>
+
+  <!-- Tailwind CSS CDN -->
+  <script src="https://cdn.tailwindcss.com"></script>
+  <script>
+    tailwind.config = {
+      darkMode: 'class',
+      theme: {
+        extend: {
+          colors: {
+            brand: {
+              500: '#ec4899',
+              600: '#db2777'
+            }
+          },
+          fontFamily: {
+            sans: ['Plus Jakarta Sans', 'Inter', 'system-ui', 'sans-serif'],
+            cursive: ['Pacifico', 'cursive'],
+          }
+        }
+      }
+    };
+  </script>
+
+  <!-- Google Fonts -->
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Pacifico&family=Plus+Jakarta+Sans:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+  
+  <!-- Lucide Icons -->
+  <script src="https://unpkg.com/lucide@latest"></script>
+  
+  <!-- QRCode.js -->
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/qrcodejs/1.0.0/qrcode.min.js"></script>
+  <link rel="stylesheet" href="/styles.css">
+</head>
+<body class="bg-slate-50 dark:bg-slate-950 text-slate-900 dark:text-slate-100 antialiased min-h-screen flex flex-col font-sans selection:bg-pink-500 selection:text-white transition-colors duration-200">
+
+  <!-- TOP MINIMAL BAR -->
+  <div class="bg-white dark:bg-slate-900 text-slate-600 dark:text-slate-400 text-xs py-2 px-6 border-b border-slate-200 dark:border-slate-800 transition-colors duration-200">
+    <div class="max-w-7xl mx-auto flex flex-wrap items-center justify-between gap-3">
+      <div class="flex items-center gap-4 text-xs font-medium">
+        <a href="tel:9396310900" class="hover:text-pink-600 dark:hover:text-pink-400 flex items-center gap-1.5 transition">
+          <i data-lucide="phone" class="w-3.5 h-3.5 text-pink-500"></i>
+          <span>+91 9396310900</span>
+        </a>
+        <span class="text-slate-300 dark:text-slate-700 hidden sm:inline">•</span>
+        <a href="mailto:mokshithguddeti@gmail.com" class="hover:text-pink-600 dark:hover:text-pink-400 hidden sm:flex items-center gap-1.5 transition">
+          <i data-lucide="mail" class="w-3.5 h-3.5 text-pink-500"></i>
+          <span>mokshithguddeti@gmail.com</span>
+        </a>
+      </div>
+      
+      <div class="flex items-center gap-4 text-xs">
+        <a href="https://wa.me/919396310900?text=Hi%20Teen%20Magnets,%20I%20want%20to%20order%20custom%20square%20magnets" target="_blank" class="text-emerald-600 dark:text-emerald-400 hover:opacity-80 font-bold flex items-center gap-1.5 transition">
+          <i data-lucide="message-circle" class="w-3.5 h-3.5"></i>
+          <span>WhatsApp Quick Order</span>
+        </a>
+        <span class="text-slate-300 dark:text-slate-700 hidden md:inline">•</span>
+        <span class="hidden md:inline text-pink-700 dark:text-pink-300 bg-pink-100 dark:bg-pink-500/10 border border-pink-200 dark:border-pink-500/20 px-2 py-0.5 rounded-full font-medium">✨ Instant UPI (GPay • PhonePe • Paytm)</span>
+      </div>
+    </div>
+  </div>
+
+  <!-- SPACIOUS, CLEAN NAVIGATION HEADER -->
+  <header class="sticky top-0 z-40 backdrop-blur-md bg-white/95 dark:bg-slate-950/95 border-b border-slate-200 dark:border-slate-800 transition-colors duration-200">
+    <div class="max-w-7xl mx-auto px-6 sm:px-8 h-20 flex items-center justify-between gap-6">
+      
+      <!-- LOGO -->
+      <div class="flex items-center gap-3.5 cursor-pointer shrink-0" onclick="switchTab('catalog')">
+        <div class="relative w-11 h-11 rounded-2xl overflow-hidden border-2 border-pink-500 shadow-md shadow-pink-500/20 group">
+          <img src="/assets/owners.jpg" alt="Teen Magnets Logo" class="w-full h-full object-cover group-hover:scale-110 transition-transform duration-300">
+        </div>
+        <div>
+          <span class="text-xl sm:text-2xl font-black tracking-tight bg-gradient-to-r from-pink-600 via-purple-600 to-amber-500 bg-clip-text text-transparent">Teen Magnets</span>
+          <span class="block text-[10px] font-bold text-slate-500 dark:text-slate-400 tracking-wider uppercase">3"x3" Square Fridge Art</span>
+        </div>
+      </div>
+
+      <!-- SPACIOUS NAVIGATION PILLS -->
+      <nav class="hidden lg:flex items-center gap-2 p-1.5 bg-slate-100 dark:bg-slate-900 rounded-2xl border border-slate-200 dark:border-slate-800 text-sm font-medium transition-colors">
+        <button id="nav-catalog" onclick="switchTab('catalog')" class="nav-btn px-5 py-2 rounded-xl flex items-center gap-2 transition-all bg-white dark:bg-slate-800 text-pink-600 dark:text-pink-400 font-bold shadow-xs cursor-pointer">
+          <i data-lucide="shopping-bag" class="w-4 h-4"></i>
+          <span>Shop</span>
+        </button>
+        <button id="nav-customizer" onclick="switchTab('customizer')" class="nav-btn px-5 py-2 rounded-xl flex items-center gap-2 transition-all text-slate-600 dark:text-slate-300 hover:text-slate-950 dark:hover:text-white cursor-pointer">
+          <i data-lucide="camera" class="w-4 h-4"></i>
+          <span>Custom Studio</span>
+        </button>
+        <button id="nav-fridge" onclick="switchTab('fridge')" class="nav-btn px-5 py-2 rounded-xl flex items-center gap-2 transition-all text-slate-600 dark:text-slate-300 hover:text-slate-950 dark:hover:text-white cursor-pointer">
+          <i data-lucide="layout-grid" class="w-4 h-4"></i>
+          <span>Fridge Sandbox</span>
+        </button>
+        <button id="nav-about" onclick="switchTab('about')" class="nav-btn px-5 py-2 rounded-xl flex items-center gap-2 transition-all text-slate-600 dark:text-slate-300 hover:text-slate-950 dark:hover:text-white cursor-pointer">
+          <i data-lucide="users" class="w-4 h-4"></i>
+          <span>Our Story</span>
+        </button>
+      </nav>
+
+      <!-- RIGHT ACTIONS: THEME TOGGLE, WISHLIST, AUTH, CART -->
+      <div class="flex items-center gap-3 shrink-0">
+        
+        <!-- Light / Dark Theme Toggle Button -->
+        <button onclick="toggleDarkMode()" id="theme-toggle-btn" title="Toggle Light / Dark Mode" class="w-10 h-10 rounded-xl bg-slate-100 dark:bg-slate-900 border border-slate-200 dark:border-slate-800 text-slate-700 dark:text-slate-300 hover:bg-slate-200 dark:hover:bg-slate-800 transition flex items-center justify-center shadow-xs cursor-pointer">
+          <span id="theme-icon-container">
+            <i data-lucide="sun" class="w-4 h-4 text-amber-500"></i>
+          </span>
+        </button>
+
+        <!-- Wishlist -->
+        <button onclick="toggleWishlistDrawer(true)" title="Wishlist" class="relative w-10 h-10 rounded-xl bg-slate-100 dark:bg-slate-900 border border-slate-200 dark:border-slate-800 hover:bg-slate-200 dark:hover:bg-slate-800 text-slate-700 dark:text-slate-300 transition flex items-center justify-center shadow-xs cursor-pointer">
+          <i data-lucide="heart" class="w-4 h-4 text-pink-500"></i>
+          <span id="wishlist-badge-count" class="absolute -top-1 -right-1 w-4 h-4 bg-pink-500 text-white rounded-full text-[10px] font-bold flex items-center justify-center scale-0 transition-transform">0</span>
+        </button>
+
+        <!-- User Sign In / Profile Container -->
+        <div id="auth-header-section" class="relative">
+          <!-- Injected by JS -->
+        </div>
+
+        <!-- Cart Button -->
+        <button onclick="toggleCartModal(true)" class="relative h-10 px-4 rounded-xl bg-gradient-to-r from-pink-600 to-purple-600 hover:from-pink-500 hover:to-purple-500 text-white font-bold text-xs transition flex items-center gap-2 shadow-md shadow-pink-600/20 cursor-pointer">
+          <i data-lucide="shopping-cart" class="w-4 h-4"></i>
+          <span class="hidden sm:inline">Cart</span>
+          <span id="cart-badge-count" class="w-4 h-4 bg-white text-slate-900 rounded-full text-[10px] font-black flex items-center justify-center scale-0 transition-transform">0</span>
+        </button>
+      </div>
+
+    </div>
+
+    <!-- Mobile Nav Bar -->
+    <div class="lg:hidden flex items-center justify-around border-t border-slate-200 dark:border-slate-800 py-2.5 px-4 bg-white dark:bg-slate-950 text-xs font-semibold">
+      <button onclick="switchTab('catalog')" class="flex items-center gap-1.5 text-pink-600 dark:text-pink-400">
+        <i data-lucide="shopping-bag" class="w-3.5 h-3.5"></i>
+        <span>Shop</span>
+      </button>
+      <button onclick="switchTab('customizer')" class="flex items-center gap-1.5 text-slate-600 dark:text-slate-400 hover:text-pink-600">
+        <i data-lucide="camera" class="w-3.5 h-3.5"></i>
+        <span>DIY Studio</span>
+      </button>
+      <button onclick="switchTab('fridge')" class="flex items-center gap-1.5 text-slate-600 dark:text-slate-400 hover:text-pink-600">
+        <i data-lucide="layout-grid" class="w-3.5 h-3.5"></i>
+        <span>Sandbox</span>
+      </button>
+      <button onclick="switchTab('about')" class="flex items-center gap-1.5 text-slate-600 dark:text-slate-400 hover:text-pink-600">
+        <i data-lucide="users" class="w-3.5 h-3.5"></i>
+        <span>Story</span>
+      </button>
+    </div>
+  </header>
+
+  <!-- MAIN CONTENT CONTAINER -->
+  <main class="flex-1 max-w-7xl w-full mx-auto px-6 sm:px-8 py-10">
+
+    <!-- ============================================================= -->
+    <!-- VIEW 1: CATALOG (ALL SQUARE) -->
+    <!-- ============================================================= -->
+    <section id="view-catalog" class="space-y-12">
+      
+      <!-- HERO BANNER -->
+      <div class="relative overflow-hidden rounded-3xl bg-gradient-to-br from-slate-900 via-purple-950 to-slate-900 text-white p-8 sm:p-14 shadow-2xl border border-slate-800">
+        <div class="absolute inset-0 opacity-15 bg-[radial-gradient(#ec4899_1px,transparent_1px)] [background-size:20px_20px]"></div>
+        
+        <div class="relative z-10 grid grid-cols-1 lg:grid-cols-12 gap-10 items-center">
+          <div class="lg:col-span-7 space-y-5">
+            <div class="inline-flex items-center gap-2 px-3.5 py-1.5 rounded-full bg-pink-500/10 text-pink-400 border border-pink-500/20 text-xs font-semibold">
+              <i data-lucide="sparkles" class="w-3.5 h-3.5"></i> Handcrafted 3" x 3" Square Magnets
+            </div>
+            
+            <h1 class="text-3xl sm:text-5xl font-black tracking-tight leading-tight">
+              Turn Your Favorite Moments Into <span class="bg-gradient-to-r from-pink-400 via-purple-300 to-amber-300 bg-clip-text text-transparent">Custom Fridge Art.</span>
+            </h1>
+            
+            <p class="text-slate-300 text-sm sm:text-base leading-relaxed max-w-xl">
+              Upload road trips, couple pictures, anime art, and quotes onto ultra-gloss 3"x3" square fridge magnets. Direct UPI ordering with instant WhatsApp confirmation.
+            </p>
+            
+            <div class="flex flex-wrap gap-4 pt-2">
+              <button onclick="switchTab('customizer')" class="px-7 py-3.5 rounded-2xl bg-gradient-to-r from-pink-600 to-purple-600 hover:from-pink-500 hover:to-purple-500 text-white font-bold shadow-lg shadow-pink-600/25 transition transform hover:-translate-y-0.5 flex items-center gap-2 text-sm cursor-pointer">
+                <i data-lucide="camera" class="w-4 h-4"></i> Create Custom Magnet (₹99)
+              </button>
+              <button onclick="switchTab('fridge')" class="px-7 py-3.5 rounded-2xl bg-slate-900/80 hover:bg-slate-800 border border-slate-700 text-white font-semibold transition flex items-center gap-2 text-sm cursor-pointer">
+                <i data-lucide="layout-grid" class="w-4 h-4"></i> Try On Fridge Sandbox
+              </button>
+            </div>
+          </div>
+
+          <!-- Hero Showcase Card -->
+          <div class="lg:col-span-5 flex justify-center">
+            <div class="relative w-64 h-64 bg-slate-900 p-4 rounded-3xl shadow-2xl rotate-2 hover:rotate-0 transition-transform duration-300 border-2 border-pink-500/40">
+              <div class="w-full h-44 rounded-2xl overflow-hidden shadow-inner">
+                <img src="/assets/owners.jpg" alt="Teen Magnets Beach Ride" class="w-full h-full object-cover">
+              </div>
+              <div class="pt-3 text-center">
+                <span class="font-cursive text-white text-base font-bold">Beach Adventures 🏍️✨</span>
+                <span class="block text-[10px] uppercase font-bold text-pink-400 tracking-widest mt-0.5">3" x 3" SQUARE MAGNET</span>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <!-- FILTER & SEARCH BAR -->
+      <div class="space-y-5">
+        <div class="flex flex-col sm:flex-row gap-4 items-stretch sm:items-center justify-between">
+          <div class="relative flex-1 max-w-md">
+            <i data-lucide="search" class="absolute left-4 top-1/2 -translate-y-1/2 w-4 h-4 text-slate-400"></i>
+            <input type="text" id="catalog-search" placeholder="Search square magnets..." oninput="handleCatalogSearch(this.value)" class="w-full pl-11 pr-4 py-3 bg-white dark:bg-slate-900 border border-slate-200 dark:border-slate-800 rounded-2xl text-sm focus:outline-none focus:ring-2 focus:ring-pink-500 text-slate-900 dark:text-slate-100 placeholder:text-slate-400 shadow-xs">
+          </div>
+
+          <select id="filter-sort" onchange="loadCatalog()" class="px-4 py-3 bg-white dark:bg-slate-900 border border-slate-200 dark:border-slate-800 rounded-2xl text-xs font-semibold text-slate-700 dark:text-slate-200 focus:outline-none focus:ring-2 focus:ring-pink-500 shadow-xs cursor-pointer">
+            <option value="featured">Featured First</option>
+            <option value="price-asc">Price: Low to High</option>
+            <option value="price-desc">Price: High to Low</option>
+            <option value="rating">Highest Rated</option>
+            <option value="newest">Newest Arrivals</option>
+          </select>
+        </div>
+
+        <!-- Category Pills -->
+        <div id="category-pills-container" class="flex gap-2.5 overflow-x-auto pb-2 scrollbar-none">
+          <!-- Injected by JS -->
+        </div>
+      </div>
+
+      <!-- MAGNET PRODUCTS GRID -->
+      <div id="catalog-grid" class="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-6 sm:gap-8">
+        <!-- Injected by JS -->
+      </div>
+    </section>
+
+    <!-- ============================================================= -->
+    <!-- VIEW 2: SQUARE PHOTO MAGNET STUDIO -->
+    <!-- ============================================================= -->
+    <section id="view-customizer" class="hidden space-y-10">
+      <div class="flex flex-col md:flex-row md:items-center justify-between gap-4 pb-6 border-b border-slate-200 dark:border-slate-800">
+        <div>
+          <span class="text-xs font-bold tracking-wider uppercase text-pink-600 dark:text-pink-400">Teen Magnets Creator Lab</span>
+          <h2 class="text-3xl font-extrabold text-slate-900 dark:text-white">Custom Square Photo Studio (3" x 3")</h2>
+          <p class="text-slate-500 dark:text-slate-400 text-sm mt-1">Upload your photo, personalize the caption, and preview live on your 3"x3" square magnet!</p>
+        </div>
+        <div class="flex items-center gap-3">
+          <button onclick="resetCustomizer()" class="px-4 py-2.5 text-xs rounded-xl border border-slate-200 dark:border-slate-800 hover:bg-slate-100 dark:hover:bg-slate-900 font-semibold text-slate-700 dark:text-slate-300 transition flex items-center gap-1.5 cursor-pointer">
+            <i data-lucide="rotate-ccw" class="w-3.5 h-3.5"></i> Reset
+          </button>
+          <button onclick="addCustomToFridge()" class="px-4 py-2.5 text-xs rounded-xl bg-purple-100 dark:bg-purple-900/60 hover:bg-purple-200 dark:hover:bg-purple-800 text-purple-800 dark:text-purple-300 font-bold transition flex items-center gap-1.5 cursor-pointer">
+            <i data-lucide="layout-grid" class="w-3.5 h-3.5"></i> Try On Fridge
+          </button>
+        </div>
+      </div>
+
+      <div class="grid grid-cols-1 lg:grid-cols-12 gap-10">
+        
+        <!-- PREVIEW STAGE -->
+        <div class="lg:col-span-6 flex flex-col items-center justify-center p-8 bg-slate-100 dark:bg-slate-900/70 rounded-3xl border border-slate-200 dark:border-slate-800 relative min-h-[460px]">
+          <div class="relative z-10 hover:scale-105 transition-transform duration-300 cursor-grab">
+            <div id="custom-preview-body" class="relative flex flex-col items-center justify-between p-3.5 text-center shadow-2xl overflow-hidden w-64 h-64 rounded-3xl bg-white dark:bg-slate-950 border-2 border-slate-300 dark:border-slate-700 text-slate-900 dark:text-slate-100">
+              <div id="custom-finish-layer" class="finish-glossy"></div>
+              
+              <div id="custom-photo-box" class="relative w-full h-44 rounded-2xl bg-gradient-to-br from-pink-500 to-purple-600 flex items-center justify-center overflow-hidden border border-slate-200 dark:border-slate-800 shadow-inner">
+                <img id="custom-uploaded-img" src="/assets/owners.jpg" alt="Custom Magnet Photo" class="w-full h-full object-cover">
+                <div id="custom-placeholder-view" class="hidden flex flex-col items-center justify-center text-white space-y-2 p-4 text-center">
+                  <i data-lucide="camera" class="w-8 h-8 text-white"></i>
+                  <span class="text-xs font-bold uppercase">Upload Photo</span>
+                </div>
+              </div>
+
+              <div class="w-full pt-1.5 flex flex-col items-center justify-center">
+                <div id="custom-preview-text" class="font-cursive text-sm text-slate-800 dark:text-slate-100 tracking-wide truncate max-w-full">
+                  Beach Adventures 🏍️✨
+                </div>
+                <div class="text-[9px] font-bold text-slate-400 dark:text-slate-500 uppercase tracking-widest mt-0.5">
+                  TEEN MAGNETS • 3"x3" SQUARE
+                </div>
+              </div>
+            </div>
+          </div>
+
+          <div class="mt-5 text-xs text-slate-500 dark:text-slate-400 bg-white dark:bg-slate-900 px-4 py-2 rounded-full border border-slate-200 dark:border-slate-800 flex items-center gap-2 shadow-xs">
+            <i data-lucide="sparkles" class="w-3.5 h-3.5 text-pink-500"></i>
+            <span>3.0" x 3.0" Square Format • Heavy Neodymium Magnet</span>
+          </div>
+        </div>
+
+        <!-- CONTROLS -->
+        <div class="lg:col-span-6 space-y-6 bg-white dark:bg-slate-900/60 p-8 rounded-3xl border border-slate-200 dark:border-slate-800 shadow-xs">
+          <div class="space-y-2">
+            <label class="block text-xs font-bold uppercase tracking-wider text-slate-500 dark:text-slate-400">1. Upload Picture</label>
+            <div class="flex items-center gap-3">
+              <input type="file" id="cust-file-input" accept="image/*" onchange="handleCustomPhotoUpload(this)" class="hidden">
+              <button type="button" onclick="document.getElementById('cust-file-input').click()" class="flex-1 py-3.5 px-4 rounded-xl border-2 border-dashed border-pink-400 dark:border-pink-500/50 hover:border-pink-600 bg-pink-50/50 dark:bg-pink-950/20 hover:bg-pink-50 text-pink-700 dark:text-pink-300 font-bold text-xs flex items-center justify-center gap-2 transition cursor-pointer">
+                <i data-lucide="upload-cloud" class="w-4 h-4"></i>
+                <span id="cust-upload-btn-text">Select Image File</span>
+              </button>
+              <button type="button" onclick="clearCustomPhoto()" title="Remove photo" class="p-3.5 rounded-xl border border-slate-200 dark:border-slate-800 hover:bg-slate-100 dark:hover:bg-slate-800 text-slate-400 cursor-pointer">
+                <i data-lucide="trash-2" class="w-4 h-4"></i>
+              </button>
+            </div>
+          </div>
+
+          <div class="space-y-3">
+            <label class="block text-xs font-bold uppercase tracking-wider text-slate-500 dark:text-slate-400">2. Custom Caption</label>
+            <input type="text" id="cust-text" value="Beach Adventures 🏍️✨" placeholder="Enter magnet caption..." oninput="updateCustomPreview()" class="w-full px-4 py-3 bg-slate-50 dark:bg-slate-950 border border-slate-200 dark:border-slate-800 rounded-xl text-sm focus:ring-2 focus:ring-pink-500 focus:outline-none text-slate-900 dark:text-slate-100">
+
+            <div class="flex gap-2">
+              <button onclick="setCustomFont('cursive')" class="cust-font-btn flex-1 py-2 px-2 rounded-lg border text-xs font-cursive border-pink-500 bg-pink-50 dark:bg-pink-950/40 text-pink-700 dark:text-pink-300 font-bold cursor-pointer">Cursive</button>
+              <button onclick="setCustomFont('sans')" class="cust-font-btn flex-1 py-2 px-2 rounded-lg border text-xs font-sans border-slate-200 dark:border-slate-800 bg-slate-50 dark:bg-slate-950 text-slate-600 dark:text-slate-400 cursor-pointer">Modern Sans</button>
+              <button onclick="setCustomFont('serif')" class="cust-font-btn flex-1 py-2 px-2 rounded-lg border text-xs font-serif border-slate-200 dark:border-slate-800 bg-slate-50 dark:bg-slate-950 text-slate-600 dark:text-slate-400 cursor-pointer">Classic Serif</button>
+              <button onclick="setCustomFont('mono')" class="cust-font-btn flex-1 py-2 px-2 rounded-lg border text-xs font-mono border-slate-200 dark:border-slate-800 bg-slate-50 dark:bg-slate-950 text-slate-600 dark:text-slate-400 cursor-pointer">Monospace</button>
+            </div>
+          </div>
+
+          <div class="space-y-2">
+            <label class="block text-xs font-bold uppercase tracking-wider text-slate-500 dark:text-slate-400">3. Protective Lamination</label>
+            <select id="cust-finish-select" onchange="setCustomFinish(this.value)" class="w-full px-4 py-3 bg-slate-50 dark:bg-slate-950 border border-slate-200 dark:border-slate-800 rounded-xl text-xs font-bold focus:ring-2 focus:ring-pink-500 focus:outline-none text-slate-900 dark:text-slate-100 cursor-pointer">
+              <option value="glossy">High Gloss Sheen Lamination</option>
+              <option value="matte">Velvet Matte Anti-Glare</option>
+              <option value="holographic">Holographic Rainbow Foil</option>
+            </select>
+          </div>
+
+          <div class="pt-4 border-t border-slate-200 dark:border-slate-800 flex items-center justify-between">
+            <div>
+              <span class="text-xs text-slate-400 font-semibold uppercase">3"x3" Custom Unit</span>
+              <div class="text-2xl font-black text-slate-900 dark:text-white">₹99.00</div>
+            </div>
+            <button onclick="addCustomToCart()" class="px-7 py-3.5 rounded-2xl bg-gradient-to-r from-pink-600 to-purple-600 hover:from-pink-500 text-white font-bold shadow-lg shadow-pink-600/30 transition flex items-center gap-2 text-sm cursor-pointer">
+              <i data-lucide="shopping-cart" class="w-4 h-4"></i> Add To Cart
+            </button>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- ============================================================= -->
+    <!-- VIEW 3: LIVE FRIDGE SIMULATOR -->
+    <!-- ============================================================= -->
+    <section id="view-fridge" class="hidden space-y-6">
+      <div class="flex flex-wrap items-center justify-between gap-4 p-5 bg-white dark:bg-slate-900 rounded-3xl border border-slate-200 dark:border-slate-800 shadow-xs">
+        <div class="flex items-center gap-3">
+          <div class="w-10 h-10 rounded-2xl bg-pink-100 dark:bg-pink-900/40 text-pink-600 dark:text-pink-300 flex items-center justify-center font-bold">
+            <i data-lucide="layout-grid" class="w-5 h-5"></i>
+          </div>
+          <div>
+            <h3 class="font-extrabold text-slate-900 dark:text-white">Interactive Refrigerator Canvas</h3>
+            <p class="text-xs text-slate-500 dark:text-slate-400">Drag, rotate, and arrange square magnets freely!</p>
+          </div>
+        </div>
+
+        <div class="flex items-center gap-3">
+          <div class="flex items-center gap-1.5 p-1 bg-slate-100 dark:bg-slate-950 rounded-xl border border-slate-200 dark:border-slate-800">
+            <button onclick="setFridgeColor('dark')" title="Matte Obsidian" class="w-7 h-7 rounded-lg bg-slate-800 ring-2 ring-offset-1 ring-slate-600 cursor-pointer"></button>
+            <button onclick="setFridgeColor('silver')" title="Brushed Stainless" class="w-7 h-7 rounded-lg bg-slate-300 cursor-pointer"></button>
+            <button onclick="setFridgeColor('mint')" title="Retro Mint" class="w-7 h-7 rounded-lg bg-teal-200 cursor-pointer"></button>
+            <button onclick="setFridgeColor('cream')" title="Vintage Cream" class="w-7 h-7 rounded-lg bg-amber-100 cursor-pointer"></button>
+          </div>
+
+          <button onclick="addRandomCatalogMagnetToFridge()" class="px-4 py-2 rounded-xl bg-slate-100 dark:bg-slate-800 hover:bg-slate-200 dark:hover:bg-slate-700 text-xs font-bold text-slate-700 dark:text-slate-200 flex items-center gap-1.5 transition cursor-pointer">
+            <i data-lucide="plus-circle" class="w-3.5 h-3.5"></i> Stick Random Magnet
+          </button>
+          <button onclick="clearFridge()" class="px-4 py-2 rounded-xl bg-rose-50 dark:bg-rose-950/40 hover:bg-rose-100 dark:hover:bg-rose-900 text-xs font-bold text-rose-700 dark:text-rose-400 flex items-center gap-1.5 transition cursor-pointer">
+            <i data-lucide="trash-2" class="w-3.5 h-3.5"></i> Clear
+          </button>
+        </div>
+      </div>
+
+      <!-- FRIDGE SURFACE -->
+      <div class="relative w-full max-w-4xl mx-auto rounded-3xl p-4 shadow-2xl bg-gradient-to-b from-slate-400 to-slate-500 dark:from-slate-800 dark:to-slate-900 border-4 border-slate-300 dark:border-slate-700">
+        <div id="fridge-door" class="fridge-surface relative w-full h-[620px] rounded-2xl overflow-hidden shadow-inner select-none transition-colors duration-300 fridge-dark">
+          <div class="absolute right-4 top-16 bottom-16 w-4 bg-gradient-to-r from-slate-700 via-slate-600 to-slate-800 rounded-full shadow-lg border border-slate-600 pointer-events-none"></div>
+          
+          <div class="absolute top-4 left-6 flex items-center gap-3 px-3.5 py-1.5 bg-slate-900/90 backdrop-blur-md rounded-xl text-white font-mono text-xs border border-white/10 pointer-events-none z-10 shadow-md">
+            <i data-lucide="thermometer" class="w-3.5 h-3.5 text-pink-400"></i>
+            <span class="text-pink-400 font-bold">3°C</span>
+            <span class="text-slate-600">|</span>
+            <span class="text-[10px] text-slate-400 uppercase tracking-widest font-sans">TEEN MAGNETS FRIDGE</span>
+          </div>
+
+          <div id="fridge-magnets-container" class="w-full h-full relative">
+            <!-- Injected by JS -->
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- ============================================================= -->
+    <!-- VIEW 4: ABOUT OWNERS & STORY -->
+    <!-- ============================================================= -->
+    <section id="view-about" class="hidden space-y-12">
+      <div class="relative overflow-hidden rounded-3xl bg-white dark:bg-slate-900/80 border border-slate-200 dark:border-slate-800 p-8 sm:p-14 shadow-xl">
+        <div class="grid grid-cols-1 lg:grid-cols-12 gap-12 items-center">
+          
+          <div class="lg:col-span-6 space-y-6">
+            <div class="inline-flex items-center gap-2 px-3.5 py-1 rounded-full bg-pink-100 dark:bg-pink-900/40 text-pink-700 dark:text-pink-300 text-xs font-bold uppercase tracking-wider">
+              ❤️ The Story Behind Teen Magnets
+            </div>
+            
+            <h2 class="text-3xl sm:text-4xl font-black text-slate-900 dark:text-white leading-tight">
+              Crafted by Young Creators on Beach Road Adventures.
+            </h2>
+
+            <p class="text-slate-600 dark:text-slate-300 text-sm sm:text-base leading-relaxed">
+              <strong>Teen Magnets</strong> was started by Mokshith Guddeti & team with a passion for custom craftsmanship: turning road trips, college memories, anime art, and friendship moments into 3"x3" square fridge magnets.
+            </p>
+
+            <div class="grid grid-cols-3 gap-4 pt-2">
+              <div class="p-4 rounded-2xl bg-slate-50 dark:bg-slate-950 border border-slate-200 dark:border-slate-800 text-center">
+                <span class="text-xl font-black text-pink-600 dark:text-pink-500">3" x 3"</span>
+                <span class="block text-xs font-semibold text-slate-500 dark:text-slate-400 mt-0.5">Square Format</span>
+              </div>
+              <div class="p-4 rounded-2xl bg-slate-50 dark:bg-slate-950 border border-slate-200 dark:border-slate-800 text-center">
+                <span class="text-xl font-black text-purple-600 dark:text-purple-400">₹99</span>
+                <span class="block text-xs font-semibold text-slate-500 dark:text-slate-400 mt-0.5">Starting Price</span>
+              </div>
+              <div class="p-4 rounded-2xl bg-slate-50 dark:bg-slate-950 border border-slate-200 dark:border-slate-800 text-center">
+                <span class="text-xl font-black text-emerald-600 dark:text-emerald-400">UPI</span>
+                <span class="block text-xs font-semibold text-slate-500 dark:text-slate-400 mt-0.5">9396310900</span>
+              </div>
+            </div>
+
+            <div class="pt-2">
+              <a href="https://wa.me/919396310900?text=Hi%20Mokshith,%20I%20love%20Teen%20Magnets!" target="_blank" class="inline-flex items-center gap-2 px-6 py-3.5 rounded-2xl bg-emerald-600 hover:bg-emerald-500 text-white font-bold text-sm shadow-md transition">
+                <i data-lucide="message-circle" class="w-4 h-4"></i>
+                <span>Chat with Mokshith on WhatsApp</span>
+              </a>
+            </div>
+          </div>
+
+          <!-- Owners Photo Frame -->
+          <div class="lg:col-span-6 flex flex-col items-center">
+            <div class="relative w-full max-w-md rounded-3xl overflow-hidden shadow-2xl border-4 border-white dark:border-slate-700">
+              <img src="/assets/owners.jpg" alt="Mokshith & Teen Magnets Founders" class="w-full h-auto object-cover">
+              <div class="absolute inset-x-0 bottom-0 p-5 bg-gradient-to-t from-black/80 via-black/40 to-transparent text-white">
+                <span class="font-bold text-sm">Founders Mokshith & Team</span>
+                <span class="block text-xs text-pink-300">Beachside ATV Ride • The Spark for Teen Magnets</span>
+              </div>
+            </div>
+          </div>
+
+        </div>
+      </div>
+    </section>
+
+  </main>
+
+  <!-- ============================================================= -->
+  <!-- DRAWER: WISHLIST -->
+  <!-- ============================================================= -->
+  <div id="wishlist-drawer" class="fixed inset-0 z-50 hidden overflow-hidden">
+    <div class="absolute inset-0 bg-slate-950/70 backdrop-blur-xs transition-opacity" onclick="toggleWishlistDrawer(false)"></div>
+    <div class="fixed inset-y-0 right-0 max-w-full flex pl-10">
+      <div class="w-screen max-w-md bg-white dark:bg-slate-900 shadow-2xl flex flex-col border-l border-slate-200 dark:border-slate-800">
+        <div class="p-6 border-b border-slate-200 dark:border-slate-800 flex items-center justify-between bg-slate-50 dark:bg-slate-900">
+          <div class="flex items-center gap-2">
+            <i data-lucide="heart" class="w-5 h-5 text-pink-500 fill-pink-500"></i>
+            <h3 class="font-extrabold text-slate-900 dark:text-white text-lg">Your Wishlist</h3>
+          </div>
+          <button onclick="toggleWishlistDrawer(false)" class="p-2 rounded-xl text-slate-400 hover:text-slate-600 dark:hover:text-white transition cursor-pointer">
+            <i data-lucide="x" class="w-5 h-5"></i>
+          </button>
+        </div>
+
+        <div id="wishlist-items-container" class="flex-1 overflow-y-auto p-6 space-y-4">
+          <!-- Populated by JS -->
+        </div>
+
+        <div class="p-6 border-t border-slate-200 dark:border-slate-800 bg-slate-50 dark:bg-slate-900/90 space-y-2">
+          <button onclick="moveAllWishlistToCart()" class="w-full py-3.5 rounded-2xl bg-gradient-to-r from-pink-600 to-purple-600 hover:from-pink-500 text-white font-bold text-sm shadow-md transition flex items-center justify-center gap-2 cursor-pointer">
+            <i data-lucide="shopping-cart" class="w-4 h-4"></i> Move All To Cart
+          </button>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- ============================================================= -->
+  <!-- MODAL: SIGN IN & GOOGLE AUTHENTICATION -->
+  <!-- ============================================================= -->
+  <div id="auth-modal" class="fixed inset-0 z-50 hidden bg-slate-950/70 backdrop-blur-sm flex items-center justify-center p-4">
+    <div class="bg-white dark:bg-slate-900 rounded-3xl max-w-md w-full p-8 shadow-2xl border border-slate-200 dark:border-slate-800 relative text-slate-900 dark:text-slate-100">
+      <button onclick="closeAuthModal()" class="absolute top-4 right-4 w-9 h-9 rounded-full bg-slate-100 dark:bg-slate-800 hover:bg-slate-200 dark:hover:bg-slate-700 flex items-center justify-center text-slate-500 dark:text-slate-400 transition cursor-pointer">
+        <i data-lucide="x" class="w-5 h-5"></i>
+      </button>
+
+      <!-- GOOGLE SIGN IN BUTTON -->
+      <div class="space-y-4 mb-6 text-center">
+        <h3 class="text-2xl font-black text-slate-900 dark:text-white">Sign In to Teen Magnets</h3>
+        <p class="text-xs text-slate-500 dark:text-slate-400">Save custom square designs & track UPI orders</p>
+        
+        <!-- Google Sign-In Direct Button -->
+        <button onclick="handleGoogleSignIn()" class="w-full py-3.5 px-4 rounded-2xl bg-slate-100 dark:bg-white hover:bg-slate-200 dark:hover:bg-slate-100 text-slate-900 font-bold text-sm flex items-center justify-center gap-3 transition shadow-sm border border-slate-200 dark:border-transparent cursor-pointer">
+          <svg class="w-5 h-5 shrink-0" viewBox="0 0 24 24">
+            <path fill="#4285F4" d="M22.56 12.25c0-.78-.07-1.53-.2-2.25H12v4.26h5.92c-.26 1.37-1.04 2.53-2.21 3.31v2.77h3.57c2.08-1.92 3.28-4.74 3.28-8.09z"/>
+            <path fill="#34A853" d="M12 23c2.97 0 5.46-.98 7.28-2.66l-3.57-2.77c-.98.66-2.23 1.06-3.71 1.06-2.86 0-5.29-1.93-6.16-4.53H2.18v2.84C3.99 20.53 7.7 23 12 23z"/>
+            <path fill="#FBBC05" d="M5.84 14.09c-.22-.66-.35-1.36-.35-2.09s.13-1.43.35-2.09V7.06H2.18C1.43 8.55 1 10.22 1 12s.43 3.45 1.18 4.94l2.85-2.22.81-.63z"/>
+            <path fill="#EA4335" d="M12 5.38c1.62 0 3.06.56 4.21 1.64l3.15-3.15C17.45 2.09 14.97 1 12 1 7.7 1 3.99 3.47 2.18 7.06l3.66 2.84c.87-2.6 3.3-4.52 6.16-4.52z"/>
+          </svg>
+          <span>Continue with Google</span>
+        </button>
+
+        <div class="relative flex items-center justify-center pt-2">
+          <div class="border-t border-slate-200 dark:border-slate-800 w-full"></div>
+          <span class="bg-white dark:bg-slate-900 px-3 text-[11px] uppercase font-bold text-slate-400">or with email</span>
+        </div>
+      </div>
+
+      <!-- Auth Switcher Header -->
+      <div class="flex border-b border-slate-200 dark:border-slate-800 mb-5 gap-4">
+        <button id="auth-tab-login-btn" onclick="switchAuthTab('login')" class="pb-2 text-sm font-extrabold text-pink-600 dark:text-pink-500 border-b-2 border-pink-600 dark:border-pink-500 cursor-pointer">Sign In</button>
+        <button id="auth-tab-signup-btn" onclick="switchAuthTab('signup')" class="pb-2 text-sm font-semibold text-slate-400 hover:text-slate-700 dark:hover:text-white border-b-2 border-transparent cursor-pointer">Create Account</button>
+      </div>
+
+      <!-- Alert / Error Message -->
+      <div id="auth-error-banner" class="hidden mb-4 p-3 rounded-xl bg-rose-50 dark:bg-rose-950/50 border border-rose-200 dark:border-rose-900 text-rose-600 dark:text-rose-400 text-xs font-semibold flex items-center gap-2">
+        <i data-lucide="alert-circle" class="w-4 h-4 shrink-0"></i>
+        <span id="auth-error-text">Invalid email or password</span>
+      </div>
+
+      <!-- 1. LOGIN FORM -->
+      <form id="form-login" onsubmit="handleLogin(event)" class="space-y-4">
+        <div>
+          <label class="block text-xs font-bold uppercase text-slate-500 dark:text-slate-400 mb-1">Email or Username</label>
+          <input type="text" id="login-email" required placeholder="you@example.com or admin" class="w-full px-3.5 py-2.5 bg-slate-50 dark:bg-slate-800 border border-slate-200 dark:border-slate-700 rounded-xl text-sm focus:ring-2 focus:ring-pink-500 focus:outline-none text-slate-900 dark:text-white">
+        </div>
+        <div>
+          <label class="block text-xs font-bold uppercase text-slate-500 dark:text-slate-400 mb-1">Password</label>
+          <input type="password" id="login-password" required placeholder="••••••••" class="w-full px-3.5 py-2.5 bg-slate-50 dark:bg-slate-800 border border-slate-200 dark:border-slate-700 rounded-xl text-sm focus:ring-2 focus:ring-pink-500 focus:outline-none text-slate-900 dark:text-white">
+        </div>
+        <button type="submit" id="btn-submit-login" class="w-full py-3 rounded-xl bg-gradient-to-r from-pink-600 to-purple-600 hover:from-pink-500 hover:to-purple-500 text-white font-bold text-sm shadow-md transition cursor-pointer">
+          Sign In
+        </button>
+      </form>
+
+      <!-- 2. SIGN UP FORM -->
+      <form id="form-signup" onsubmit="handleSignup(event)" class="hidden space-y-3">
+        <div>
+          <label class="block text-xs font-bold uppercase text-slate-500 dark:text-slate-400 mb-1">Full Name</label>
+          <input type="text" id="signup-name" required placeholder="Your Name" class="w-full px-3.5 py-2.5 bg-slate-50 dark:bg-slate-800 border border-slate-200 dark:border-slate-700 rounded-xl text-sm focus:ring-2 focus:ring-pink-500 focus:outline-none text-slate-900 dark:text-white">
+        </div>
+        <div>
+          <label class="block text-xs font-bold uppercase text-slate-500 dark:text-slate-400 mb-1">Email Address</label>
+          <input type="email" id="signup-email" required placeholder="you@example.com" class="w-full px-3.5 py-2.5 bg-slate-50 dark:bg-slate-800 border border-slate-200 dark:border-slate-700 rounded-xl text-sm focus:ring-2 focus:ring-pink-500 focus:outline-none text-slate-900 dark:text-white">
+        </div>
+        <div>
+          <label class="block text-xs font-bold uppercase text-slate-500 dark:text-slate-400 mb-1">Phone Number (For UPI & Delivery)</label>
+          <input type="tel" id="signup-phone" required placeholder="9396310900" class="w-full px-3.5 py-2.5 bg-slate-50 dark:bg-slate-800 border border-slate-200 dark:border-slate-700 rounded-xl text-sm focus:ring-2 focus:ring-pink-500 focus:outline-none text-slate-900 dark:text-white">
+        </div>
+        <div>
+          <label class="block text-xs font-bold uppercase text-slate-500 dark:text-slate-400 mb-1">Password</label>
+          <input type="password" id="signup-password" required placeholder="••••••••" class="w-full px-3.5 py-2.5 bg-slate-50 dark:bg-slate-800 border border-slate-200 dark:border-slate-700 rounded-xl text-sm focus:ring-2 focus:ring-pink-500 focus:outline-none text-slate-900 dark:text-white">
+        </div>
+        <button type="submit" id="btn-submit-signup" class="w-full py-3 rounded-xl bg-gradient-to-r from-pink-600 to-purple-600 hover:from-pink-500 hover:to-purple-500 text-white font-bold text-sm shadow-md transition cursor-pointer">
+          Create Account
+        </button>
+      </form>
+    </div>
+  </div>
+
+  <!-- ============================================================= -->
+  <!-- MODAL: GOOGLE ACCOUNT PICKER POPUP -->
+  <!-- ============================================================= -->
+  <div id="google-picker-modal" class="fixed inset-0 z-50 hidden bg-slate-950/80 backdrop-blur-sm flex items-center justify-center p-4">
+    <div class="bg-white dark:bg-slate-900 rounded-3xl max-w-sm w-full p-6 shadow-2xl border border-slate-200 dark:border-slate-700 space-y-4 text-center">
+      <div class="w-12 h-12 bg-white rounded-full mx-auto flex items-center justify-center shadow-md border border-slate-200">
+        <svg class="w-6 h-6" viewBox="0 0 24 24">
+          <path fill="#4285F4" d="M22.56 12.25c0-.78-.07-1.53-.2-2.25H12v4.26h5.92c-.26 1.37-1.04 2.53-2.21 3.31v2.77h3.57c2.08-1.92 3.28-4.74 3.28-8.09z"/>
+          <path fill="#34A853" d="M12 23c2.97 0 5.46-.98 7.28-2.66l-3.57-2.77c-.98.66-2.23 1.06-3.71 1.06-2.86 0-5.29-1.93-6.16-4.53H2.18v2.84C3.99 20.53 7.7 23 12 23z"/>
+          <path fill="#FBBC05" d="M5.84 14.09c-.22-.66-.35-1.36-.35-2.09s.13-1.43.35-2.09V7.06H2.18C1.43 8.55 1 10.22 1 12s.43 3.45 1.18 4.94l2.85-2.22.81-.63z"/>
+          <path fill="#EA4335" d="M12 5.38c1.62 0 3.06.56 4.21 1.64l3.15-3.15C17.45 2.09 14.97 1 12 1 7.7 1 3.99 3.47 2.18 7.06l3.66 2.84c.87-2.6 3.3-4.52 6.16-4.52z"/>
+        </svg>
+      </div>
+      <h3 class="text-lg font-black text-slate-900 dark:text-white">Choose a Google Account</h3>
+      <p class="text-xs text-slate-500 dark:text-slate-400">to continue to <strong>Teen Magnets</strong></p>
+
+      <!-- 1-Click Select Profile Cards -->
+      <div class="space-y-2 pt-2 text-left">
+        <button onclick="confirmGoogleAccount('Mokshith Guddeti', 'mokshithguddeti@gmail.com')" class="w-full p-3 rounded-2xl bg-slate-50 dark:bg-slate-800 hover:bg-slate-100 dark:hover:bg-slate-700 flex items-center gap-3 transition border border-slate-200 dark:border-slate-700 cursor-pointer">
+          <div class="w-9 h-9 rounded-full bg-pink-600 text-white font-bold flex items-center justify-center text-sm shadow-xs">
+            M
+          </div>
+          <div class="flex-1 min-w-0">
+            <span class="block text-xs font-bold text-slate-900 dark:text-white truncate">Mokshith Guddeti</span>
+            <span class="block text-[11px] text-slate-500 dark:text-slate-400 truncate">mokshithguddeti@gmail.com</span>
+          </div>
+        </button>
+
+        <button onclick="confirmGoogleAccount('Google Customer', 'customer@gmail.com')" class="w-full p-3 rounded-2xl bg-slate-50 dark:bg-slate-800 hover:bg-slate-100 dark:hover:bg-slate-700 flex items-center gap-3 transition border border-slate-200 dark:border-slate-700 cursor-pointer">
+          <div class="w-9 h-9 rounded-full bg-blue-600 text-white font-bold flex items-center justify-center text-sm shadow-xs">
+            G
+          </div>
+          <div class="flex-1 min-w-0">
+            <span class="block text-xs font-bold text-slate-900 dark:text-white truncate">Google Customer</span>
+            <span class="block text-[11px] text-slate-500 dark:text-slate-400 truncate">customer@gmail.com</span>
+          </div>
+        </button>
+      </div>
+
+      <!-- Custom Google Account Input (Type any Google Email) -->
+      <div class="pt-3 border-t border-slate-200 dark:border-slate-700 text-left space-y-2">
+        <span class="text-[11px] font-bold text-slate-600 dark:text-slate-400 block">Use another Google account:</span>
+        <div class="space-y-1.5">
+          <input type="text" id="custom-google-name" placeholder="Your Name" class="w-full px-3 py-2 bg-slate-50 dark:bg-slate-800 border border-slate-200 dark:border-slate-700 rounded-xl text-xs focus:ring-2 focus:ring-pink-500 focus:outline-none text-slate-900 dark:text-white">
+          <input type="email" id="custom-google-email" placeholder="yourname@gmail.com" class="w-full px-3 py-2 bg-slate-50 dark:bg-slate-800 border border-slate-200 dark:border-slate-700 rounded-xl text-xs focus:ring-2 focus:ring-pink-500 focus:outline-none text-slate-900 dark:text-white">
+          <button onclick="submitCustomGoogleAccount()" class="w-full py-2.5 rounded-xl bg-pink-600 hover:bg-pink-500 text-white font-bold text-xs shadow-md transition cursor-pointer">
+            Sign In with this Google Account
+          </button>
+        </div>
+      </div>
+
+      <button onclick="document.getElementById('google-picker-modal').classList.add('hidden')" class="text-xs text-slate-400 hover:text-slate-600 dark:hover:text-white pt-2 cursor-pointer">Cancel</button>
+    </div>
+  </div>
+
+  <!-- ============================================================= -->
+  <!-- MODAL: MY ORDERS (FOR LOGGED-IN USERS) -->
+  <!-- ============================================================= -->
+  <div id="my-orders-modal" class="fixed inset-0 z-50 hidden bg-slate-950/70 backdrop-blur-sm flex items-center justify-center p-4">
+    <div class="bg-white dark:bg-slate-900 rounded-3xl max-w-lg w-full max-h-[85vh] flex flex-col shadow-2xl border border-slate-200 dark:border-slate-800 relative">
+      <div class="p-6 border-b border-slate-200 dark:border-slate-800 flex items-center justify-between">
+        <div class="flex items-center gap-2">
+          <i data-lucide="package" class="w-5 h-5 text-pink-600"></i>
+          <h3 class="font-extrabold text-slate-900 dark:text-white text-lg">My Orders & Tracking</h3>
+        </div>
+        <button onclick="document.getElementById('my-orders-modal').classList.add('hidden')" class="p-2 rounded-xl text-slate-400 hover:text-slate-600 dark:hover:text-white transition cursor-pointer">
+          <i data-lucide="x" class="w-5 h-5"></i>
+        </button>
+      </div>
+
+      <div id="my-orders-list" class="p-6 flex-1 overflow-y-auto space-y-4">
+        <!-- Injected by JS -->
+      </div>
+    </div>
+  </div>
+
+  <!-- ============================================================= -->
+  <!-- MODAL: ORDER SUCCESS & WHATSAPP NOTIFICATION (9396310899) -->
+  <!-- ============================================================= -->
+  <div id="order-success-modal" class="fixed inset-0 z-50 hidden bg-slate-950/80 backdrop-blur-md flex items-center justify-center p-4">
+    <div class="bg-white dark:bg-slate-900 rounded-3xl max-w-md w-full p-8 shadow-2xl border border-slate-200 dark:border-slate-700 text-center space-y-5 animate-in fade-in zoom-in duration-200">
+      <div class="w-16 h-16 rounded-full bg-emerald-100 dark:bg-emerald-950/60 text-emerald-600 dark:text-emerald-400 mx-auto flex items-center justify-center shadow-lg border border-emerald-300 dark:border-emerald-800">
+        <i data-lucide="check-circle" class="w-9 h-9"></i>
+      </div>
+
+      <div class="space-y-1.5">
+        <span class="text-xs font-bold text-pink-600 dark:text-pink-400 uppercase tracking-wider block">Teen Magnets Order Confirmed!</span>
+        <h3 class="text-2xl font-black text-slate-900 dark:text-white" id="success-order-number">TM-XXXXXX</h3>
+        <p class="text-xs text-slate-500 dark:text-slate-400">Thank you for your order! Send your receipt directly to our team on WhatsApp for fastest packing & tracking.</p>
+      </div>
+
+      <!-- Order Details Summary Box -->
+      <div class="p-4 rounded-2xl bg-slate-50 dark:bg-slate-800/70 border border-slate-200 dark:border-slate-700 text-left text-xs space-y-1.5">
+        <div class="flex justify-between"><span class="text-slate-400">Recipient:</span> <strong id="success-customer-name" class="text-slate-900 dark:text-white">Customer</strong></div>
+        <div class="flex justify-between"><span class="text-slate-400">Total Paid:</span> <strong id="success-order-amount" class="text-pink-600 dark:text-pink-400 font-black text-sm">₹0.00</strong></div>
+        <div class="flex justify-between"><span class="text-slate-400">Delivery To:</span> <span id="success-order-address" class="text-slate-700 dark:text-slate-300 truncate max-w-[200px]">Address</span></div>
+      </div>
+
+      <!-- WhatsApp Action Button (Notifies 9396310899) -->
+      <a id="btn-success-whatsapp" href="#" target="_blank" class="w-full py-4 px-4 rounded-2xl bg-emerald-600 hover:bg-emerald-500 text-white font-black text-sm shadow-xl shadow-emerald-600/30 transition flex items-center justify-center gap-2.5 transform hover:scale-[1.02] cursor-pointer">
+        <i data-lucide="message-circle" class="w-5 h-5"></i>
+        <span>Send to WhatsApp (+91 9396310899)</span>
+      </a>
+
+      <div class="flex items-center justify-center gap-3 pt-2">
+        <button onclick="document.getElementById('order-success-modal').classList.add('hidden'); switchTab('catalog');" class="text-xs text-slate-500 dark:text-slate-400 hover:text-slate-800 dark:hover:text-white font-semibold cursor-pointer">
+          Continue Shopping
+        </button>
+      </div>
+    </div>
+  </div>
+
+  <!-- ============================================================= -->
+  <!-- MODAL: PRODUCT QUICK VIEW -->
+  <!-- ============================================================= -->
+  <div id="product-modal" class="fixed inset-0 z-50 hidden bg-slate-950/70 backdrop-blur-sm flex items-center justify-center p-4">
+    <div class="bg-white dark:bg-slate-900 rounded-3xl max-w-2xl w-full max-h-[90vh] overflow-y-auto shadow-2xl border border-slate-200 dark:border-slate-800 relative">
+      <button onclick="closeProductModal()" class="absolute top-4 right-4 w-9 h-9 rounded-full bg-slate-100 dark:bg-slate-800 hover:bg-slate-200 dark:hover:bg-slate-700 flex items-center justify-center text-slate-500 dark:text-slate-400 transition cursor-pointer">
+        <i data-lucide="x" class="w-5 h-5"></i>
+      </button>
+      <div id="product-modal-content" class="p-6 sm:p-8 space-y-6">
+        <!-- Injected by JS -->
+      </div>
+    </div>
+  </div>
+
+  <!-- ============================================================= -->
+  <!-- DRAWER: CART & MULTI-STEP CHECKOUT (1. ADDRESS -> 2. PAYMENT) -->
+  <!-- ============================================================= -->
+  <div id="cart-drawer" class="fixed inset-0 z-50 hidden overflow-hidden">
+    <div class="absolute inset-0 bg-slate-950/70 backdrop-blur-xs transition-opacity" onclick="toggleCartModal(false)"></div>
+    
+    <div class="fixed inset-y-0 right-0 max-w-full flex pl-10">
+      <div class="w-screen max-w-md bg-white dark:bg-slate-900 shadow-2xl flex flex-col text-slate-900 dark:text-slate-100 border-l border-slate-200 dark:border-slate-800">
+        
+        <!-- DRAWER HEADER -->
+        <div class="p-6 border-b border-slate-200 dark:border-slate-800 flex items-center justify-between bg-slate-50 dark:bg-slate-900">
+          <div class="flex items-center gap-2">
+            <i data-lucide="shopping-cart" class="w-5 h-5 text-pink-600"></i>
+            <h3 id="cart-drawer-title" class="font-extrabold text-slate-900 dark:text-white text-lg">Your Magnet Cart</h3>
+          </div>
+          <button onclick="toggleCartModal(false)" class="p-2 rounded-xl text-slate-400 hover:text-slate-600 dark:hover:text-white transition cursor-pointer">
+            <i data-lucide="x" class="w-5 h-5"></i>
+          </button>
+        </div>
+
+        <!-- STAGE 1: CART ITEMS LIST -->
+        <div id="cart-items-container" class="flex-1 overflow-y-auto p-6 space-y-4">
+          <!-- Injected by JS -->
+        </div>
+
+        <!-- STAGE 1 BOTTOM PANEL: CART SUMMARY & PROCEED TO ADDRESS -->
+        <div id="cart-checkout-panel" class="p-6 border-t border-slate-200 dark:border-slate-800 bg-slate-50 dark:bg-slate-900/90 space-y-4">
+          <div class="space-y-1.5 text-sm">
+            <div class="flex justify-between text-slate-500 dark:text-slate-400">
+              <span>Subtotal</span>
+              <span id="cart-subtotal" class="font-semibold text-slate-900 dark:text-white">₹0.00</span>
+            </div>
+            <div class="flex justify-between text-slate-500 dark:text-slate-400">
+              <span>Safe Magnetic Packaging</span>
+              <span class="font-semibold text-emerald-600 dark:text-emerald-400">FREE</span>
+            </div>
+            <div class="pt-2 border-t border-slate-200 dark:border-slate-800 flex justify-between text-base font-extrabold text-slate-900 dark:text-white">
+              <span>Total Amount</span>
+              <span id="cart-total">₹0.00</span>
+            </div>
+          </div>
+
+          <button onclick="goToAddressStep()" id="btn-proceed-address" class="w-full py-3.5 rounded-2xl bg-gradient-to-r from-pink-600 to-purple-600 hover:from-pink-500 hover:to-purple-500 text-white font-bold shadow-lg shadow-pink-600/30 transition flex items-center justify-center gap-2 cursor-pointer">
+            <span>Proceed to Shipping Address (Step 1)</span>
+            <i data-lucide="arrow-right" class="w-4 h-4"></i>
+          </button>
+        </div>
+
+        <!-- STAGE 2: STEP 1 - SHIPPING ADDRESS & CONTACT FORM -->
+        <div id="checkout-address-panel" class="hidden flex-1 overflow-y-auto p-6 space-y-5">
+          <div class="flex items-center justify-between pb-3 border-b border-slate-200 dark:border-slate-800">
+            <div>
+              <span class="text-[10px] font-bold text-pink-600 dark:text-pink-400 uppercase tracking-widest block">Step 1 of 2</span>
+              <h4 class="font-extrabold text-slate-900 dark:text-white text-base">Delivery Address</h4>
+            </div>
+            <button onclick="goToCartItemsStep()" class="text-xs text-pink-600 dark:text-pink-400 font-bold hover:underline cursor-pointer">← Back to Cart</button>
+          </div>
+
+          <form onsubmit="handleAddressSubmit(event)" class="space-y-3.5">
+            <div>
+              <label class="block text-xs font-bold uppercase text-slate-500 dark:text-slate-400 mb-1">Full Recipient Name *</label>
+              <input type="text" id="order-name" required placeholder="Full Name" class="w-full px-3.5 py-2.5 bg-slate-50 dark:bg-slate-800 border border-slate-200 dark:border-slate-700 rounded-xl text-xs focus:ring-2 focus:ring-pink-500 focus:outline-none text-slate-900 dark:text-white">
+            </div>
+
+            <div class="grid grid-cols-1 sm:grid-cols-2 gap-3">
+              <div>
+                <label class="block text-xs font-bold uppercase text-slate-500 dark:text-slate-400 mb-1">WhatsApp / Phone *</label>
+                <input type="tel" id="order-phone" required placeholder="9396310900" class="w-full px-3.5 py-2.5 bg-slate-50 dark:bg-slate-800 border border-slate-200 dark:border-slate-700 rounded-xl text-xs focus:ring-2 focus:ring-pink-500 focus:outline-none text-slate-900 dark:text-white">
+              </div>
+              <div>
+                <label class="block text-xs font-bold uppercase text-slate-500 dark:text-slate-400 mb-1">Email Address *</label>
+                <input type="email" id="order-email" required placeholder="name@gmail.com" class="w-full px-3.5 py-2.5 bg-slate-50 dark:bg-slate-800 border border-slate-200 dark:border-slate-700 rounded-xl text-xs focus:ring-2 focus:ring-pink-500 focus:outline-none text-slate-900 dark:text-white">
+              </div>
+            </div>
+
+            <div>
+              <label class="block text-xs font-bold uppercase text-slate-500 dark:text-slate-400 mb-1">Street Address / House No / Landmark *</label>
+              <textarea id="order-address" required rows="3" placeholder="House No, Apartment, Street name, Near Landmark" class="w-full px-3.5 py-2.5 bg-slate-50 dark:bg-slate-800 border border-slate-200 dark:border-slate-700 rounded-xl text-xs focus:ring-2 focus:ring-pink-500 focus:outline-none text-slate-900 dark:text-white"></textarea>
+            </div>
+
+            <div class="grid grid-cols-2 gap-3">
+              <div>
+                <label class="block text-xs font-bold uppercase text-slate-500 dark:text-slate-400 mb-1">City & State *</label>
+                <input type="text" id="order-city" required placeholder="e.g. Hyderabad, TS" class="w-full px-3.5 py-2.5 bg-slate-50 dark:bg-slate-800 border border-slate-200 dark:border-slate-700 rounded-xl text-xs focus:ring-2 focus:ring-pink-500 focus:outline-none text-slate-900 dark:text-white">
+              </div>
+              <div>
+                <label class="block text-xs font-bold uppercase text-slate-500 dark:text-slate-400 mb-1">Pincode *</label>
+                <input type="text" id="order-pincode" required placeholder="500001" class="w-full px-3.5 py-2.5 bg-slate-50 dark:bg-slate-800 border border-slate-200 dark:border-slate-700 rounded-xl text-xs focus:ring-2 focus:ring-pink-500 focus:outline-none text-slate-900 dark:text-white">
+              </div>
+            </div>
+
+            <div class="p-3 bg-pink-50/50 dark:bg-pink-950/20 rounded-xl border border-pink-200/50 dark:border-pink-900/30 text-[11px] text-pink-700 dark:text-pink-300">
+              💡 You can edit or change this address anytime before making the payment.
+            </div>
+
+            <button type="submit" class="w-full py-3.5 rounded-2xl bg-gradient-to-r from-pink-600 to-purple-600 hover:from-pink-500 hover:to-purple-500 text-white font-bold text-sm shadow-md transition flex items-center justify-center gap-2 cursor-pointer mt-4">
+              <span>Continue to UPI Payment (Step 2)</span>
+              <i data-lucide="arrow-right" class="w-4 h-4"></i>
+            </button>
+          </form>
+        </div>
+
+        <!-- STAGE 3: STEP 2 - UPI PAYMENT & ORDER CONFIRMATION -->
+        <div id="checkout-payment-panel" class="hidden flex-1 overflow-y-auto p-6 space-y-4">
+          <div class="flex items-center justify-between pb-3 border-b border-slate-200 dark:border-slate-800">
+            <div>
+              <span class="text-[10px] font-bold text-emerald-600 dark:text-emerald-400 uppercase tracking-widest block">Step 2 of 2</span>
+              <h4 class="font-extrabold text-slate-900 dark:text-white text-base">UPI Payment</h4>
+            </div>
+            <button onclick="goToAddressStep()" class="text-xs text-pink-600 dark:text-pink-400 font-bold hover:underline cursor-pointer">✏️ Edit Address</button>
+          </div>
+
+          <!-- Address Summary Review Card with Edit Button -->
+          <div class="p-3.5 bg-slate-50 dark:bg-slate-800/80 rounded-2xl border border-slate-200 dark:border-slate-700 text-xs space-y-1">
+            <div class="flex items-center justify-between font-bold text-slate-900 dark:text-white">
+              <span id="summary-address-name">Customer Name</span>
+              <button onclick="goToAddressStep()" class="text-pink-600 dark:text-pink-400 hover:underline text-[11px] font-semibold cursor-pointer">Change Address</button>
+            </div>
+            <div id="summary-address-phone" class="text-slate-500 dark:text-slate-400 text-[11px]">+91 9396310900</div>
+            <div id="summary-address-text" class="text-slate-700 dark:text-slate-300 text-xs leading-relaxed pt-1">Street Address, City, Pincode</div>
+          </div>
+
+          <form onsubmit="handlePlaceOrder(event)" class="space-y-4">
+            <!-- UPI Payment Card & QR Code -->
+            <div class="p-4 bg-gradient-to-br from-pink-50 via-purple-50 to-white dark:from-slate-800 dark:via-purple-950/40 dark:to-slate-900 rounded-2xl border-2 border-pink-200 dark:border-pink-900/60 space-y-3">
+              <div class="flex items-center justify-between">
+                <span class="text-xs font-extrabold uppercase tracking-wider text-pink-700 dark:text-pink-300 flex items-center gap-1.5">
+                  <i data-lucide="qr-code" class="w-4 h-4"></i> Scan & Pay Via UPI
+                </span>
+                <span class="text-xs font-mono font-bold text-slate-900 dark:text-white" id="upi-payable-amount">₹0.00</span>
+              </div>
+
+              <div class="flex flex-col items-center justify-center p-3 bg-white rounded-xl border border-slate-200 dark:border-slate-700 shadow-sm">
+                <div id="upi-qrcode" class="p-2 bg-white"></div>
+                <div class="mt-2 text-center">
+                  <span class="text-[11px] font-bold text-slate-800 block">UPI Number: <span class="font-mono text-pink-600 font-black">9396310900</span></span>
+                  <span class="text-[10px] text-slate-500">Scan with GPay, PhonePe, Paytm or BHIM</span>
+                </div>
+              </div>
+
+              <a id="btn-upi-deeplink" href="upi://pay?pa=9396310900@ybl&pn=Teen%20Magnets&cu=INR" class="block w-full py-2.5 px-3 rounded-xl bg-purple-600 hover:bg-purple-700 text-white font-bold text-xs text-center shadow-md transition">
+                ⚡ Open In UPI App (GPay / PhonePe / Paytm)
+              </a>
+
+              <div class="space-y-1">
+                <label class="block text-[11px] font-bold text-slate-600 dark:text-slate-300">UPI Ref / UTR Number (12 digits)</label>
+                <input type="text" id="order-upi-utr" placeholder="e.g. 427819827361" class="w-full px-3.5 py-2.5 bg-white dark:bg-slate-800 border border-slate-200 dark:border-slate-700 rounded-xl text-xs font-mono focus:ring-2 focus:ring-pink-500 focus:outline-none text-slate-900 dark:text-white">
+              </div>
+            </div>
+
+            <button type="submit" id="btn-confirm-order" class="w-full py-3.5 rounded-2xl bg-emerald-600 hover:bg-emerald-500 text-white font-bold shadow-lg shadow-emerald-600/30 transition flex items-center justify-center gap-2 cursor-pointer">
+              <i data-lucide="check-circle" class="w-4 h-4"></i>
+              <span>Confirm & Place Order</span>
+            </button>
+          </form>
+        </div>
+
+      </div>
+    </div>
+  </div>
+
+  <!-- FLOATING WHATSAPP BUTTON -->
+  <a href="https://wa.me/919396310900?text=Hi%20Teen%20Magnets,%20I%20want%20to%20order%20custom%20square%20magnets" target="_blank" title="Chat on WhatsApp" class="fixed bottom-6 left-6 z-40 p-3.5 rounded-full bg-emerald-500 hover:bg-emerald-600 text-white shadow-xl hover:scale-110 transition-transform duration-200 flex items-center gap-2">
+    <i data-lucide="message-circle" class="w-6 h-6"></i>
+    <span class="hidden sm:inline text-xs font-bold pr-1">Chat & Order</span>
+  </a>
+
+  <!-- FOOTER -->
+  <footer class="mt-auto border-t border-slate-200 dark:border-slate-800 bg-white dark:bg-slate-950 py-8 transition-colors">
+    <div class="max-w-7xl mx-auto px-6 sm:px-8 flex flex-col sm:flex-row items-center justify-between gap-4 text-xs text-slate-500 dark:text-slate-400">
+      <div class="flex items-center gap-2">
+        <span class="font-bold text-slate-800 dark:text-slate-200">Teen Magnets</span> • Handcrafted 3"x3" Square Fridge Magnets & Instant UPI Checkout
+      </div>
+      <div class="flex items-center gap-4">
+        <span>Support: <strong>+91 9396310900</strong></span>
+        <span>•</span>
+        <span><strong>mokshithguddeti@gmail.com</strong></span>
+      </div>
+    </div>
+  </footer>
+
+  <!-- Notification Toast -->
+  <div id="toast" class="fixed bottom-6 right-6 z-50 px-4 py-3 rounded-2xl shadow-xl bg-slate-900 text-white text-xs font-semibold flex items-center gap-2.5 translate-y-24 opacity-0 transition-all duration-300 pointer-events-none border border-slate-800">
+    <i data-lucide="check-circle-2" class="w-4 h-4 text-emerald-400"></i>
+    <span id="toast-message">Item added to cart!</span>
+  </div>
+
+  <script src="/app.js"></script>
+</body>
+</html>
